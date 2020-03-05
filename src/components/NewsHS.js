@@ -1,15 +1,16 @@
 import React from 'react';
 
-const News = ({title,content, image, link}) => {
+const NewsHS = ({title,content, image, link}) => {
     return(
-        <div>
-            <h1>{title}</h1>
+        <React.Fragment>
+            <h1>HELSINGIN SANOMAT</h1>
+            <h2>{title}</h2>
             <p>{content}</p>
             <img src={image} alt=""/>
             <br/>
             <a href={link}>Linkki uutiseen</a>
             <hr></hr>
-        </div>
+        </React.Fragment>
     )
 }
-export default News;
+export default NewsHS;
