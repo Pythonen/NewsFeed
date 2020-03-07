@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
-import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import React from 'react';
+import {Navbar, Nav} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return(
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">Tuoreimmat uutiset</Navbar.Brand>
+            <Link to='/'>
+                <Navbar.Brand>Tuoreimmat uutiset</Navbar.Brand>
+            </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="#link">Helsingin-Sanomat</Nav.Link>
-                    <Nav.Link href="#link">Iltalehti</Nav.Link>
-                    <Nav.Link href="#link">Ilta-Sanomat</Nav.Link>
-                    <Nav.Link href="#link">Yle Uutiset</Nav.Link>
-                    <Nav.Link href="#link">Kauppalehti</Nav.Link>             
+                <Nav.Link ><Link to='/hs'><li>Helsingin-Sanomat</li></Link></Nav.Link>
+                <Nav.Link ><Link to='/il'><li>Iltalehti</li></Link></Nav.Link>
+                <Nav.Link ><Link to='/is'><li>Ilta-Sanomat</li></Link></Nav.Link>
+                <Nav.Link ><Link to='/yle'><li>Yle Uutiset</li></Link></Nav.Link>
+                <Nav.Link ><Link to='/kl'><li>Kauppalehti</li></Link></Nav.Link>          
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

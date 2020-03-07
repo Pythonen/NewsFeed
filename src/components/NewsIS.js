@@ -2,27 +2,28 @@ import Card from 'react-bootstrap/Card';
 import { CardDeck } from 'react-bootstrap';
 import React, {useEffect, useState} from 'react';
 
-function NewsHS() {
+
+function NewsIS() {
    
-    const [newsHS, setNewsHS] = useState([]);
+    const [newsIS, setNewsIS] = useState([]);
    
     useEffect(() => {
-        getNewsHS();
+        getNewsIS();
       }, [])
 
-    const getNewsHS = () => {
-        return fetch(`https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.hs.fi%2Frss%2Ftuoreimmat.xml`)
+    const getNewsIS = () => {
+        return fetch(`https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.is.fi%2Frss%2Ftuoreimmat.xml`)
         .then(res => res.json())
-        .then(data => setNewsHS(data.items))
+        .then(data => setNewsIS(data.items))
         .catch(console.error);
       }
     return (
         <React.Fragment>
-        {newsHS.map((newsdata, key) => (
+        {newsIS.map((newsdata, key) => (
         <CardDeck>
             <Card style={{maxWidth: '50%',}}>
             
-                <Card.Body>
+                <Card.Body key={key}>
                     <Card.Title>{newsdata.title}</Card.Title>
                         <Card.Text>
                         {newsdata.description}
@@ -36,4 +37,4 @@ function NewsHS() {
         </React.Fragment>
     )
 }
-export default NewsHS;
+export default NewsIS;

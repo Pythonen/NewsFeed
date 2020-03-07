@@ -1,36 +1,30 @@
 import React, {useEffect, useState} from 'react';
 import NewsHS from './components/NewsHS';
 import NewsIL from './components/NewsIL';
+import NewsIS from './components/NewsIS';
+import NewsYLE from './components/NewsYLE';
+import NewsKL from './components/NewsKL';
 import './App.css';
 import Header from './components/Header';
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 
 
 function App() {
 
-  
-  const [newsIL, setNewsIL] = useState([]);
-
-  useEffect(() => {
-    getNewsIL();
-  }, [])
-
-  
-
-  const getNewsIL = () => {
-    return fetch(`https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.iltalehti.fi%2Frss%2Frss.xml`)
-    .then(res => res.json())
-    .then(data => setNewsIL(data.items))
-    .catch(console.error);
-  }
   return ( 
+    <Router>
     <div className="App">
       <Header/>
-      <React.Fragment>
-      {newsIL.map((newsdata, key) => (
-        <NewsIL title={newsdata.title} content={newsdata.description} key={key} image={newsdata.enclosure.link} link={newsdata.link}/>
-      ))}
-      </React.Fragment>
+      <Switch>
+        <Route path="/il" component={NewsIL}/>
+        <Route path="/hs" component={NewsHS}/>
+        <Route path="/is" component={NewsIS}/>
+        <Route path="/yle" component={NewsYLE}/>
+        <Route path="/kl" component={NewsKL}/>
+      </Switch>
     </div>
+    </Router>
   );
 }
 
