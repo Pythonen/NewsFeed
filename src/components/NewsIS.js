@@ -1,5 +1,9 @@
-import Card from 'react-bootstrap/Card';
-import { CardDeck } from 'react-bootstrap';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
+import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 import React, {useEffect, useState} from 'react';
 
 
@@ -20,19 +24,29 @@ function NewsIS() {
     return (
         <React.Fragment>
         {newsIS.map((newsdata, key) => (
-        <CardDeck>
-            <Card style={{maxWidth: '50%',}}>
-            
-                <Card.Body key={key}>
-                    <Card.Title>{newsdata.title}</Card.Title>
-                        <Card.Text>
-                        {newsdata.description}
-                        </Card.Text>
-                <Card.Link href={newsdata.link}>Linkki uutiseen</Card.Link>
-                </Card.Body>
-                <Card.Img variant="bottom" src={newsdata.enclosure.link} />
-            </Card>
-        </CardDeck>
+        <Grid container spacing={2}>
+        <Grid item xs={12}>
+         <Card variant="outlined">
+            <CardContent>
+                <h3>
+                    {newsdata.title}
+                </h3>
+                <h5>
+                    {newsdata.description}
+                 </h5>
+                 <CardMedia
+                 alt={key}
+                 style={{height: 0, paddingTop: '56.25%'}} 
+                 image={newsdata.enclosure.link} />
+                <Typography variant="h6">
+                 <Link href={newsdata.link}>
+                     Linkki uutiseen
+                 </Link>
+                </Typography>
+            </CardContent>
+         </Card>
+         </Grid>
+        </Grid>
         ))}
         </React.Fragment>
     )
